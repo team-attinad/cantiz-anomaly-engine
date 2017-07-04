@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+   nupic-mysql:
+     image: mysql:5.6
+     container_name: nupic-mysql
+     ports:
+       - "3306:3306"
+     environment:
+       - MYSQL_ROOT_PASSWORD=nupic
+     volumes:
+         - "/home/vishnuv/docker_data:/app"
+
+   nupic:
+     image: docker_nupic
+     ports:
+       - "5000:80"
+     environment:
+         - NTA_CONF_PROP_nupic_cluster_database_passwd=nupic
+         - NTA_CONF_PROP_nupic_cluster_database_host=mysql
+     links:
+         - nupic-mysql:mysql
+
+
+
