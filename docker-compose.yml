@@ -9,10 +9,10 @@ services:
      environment:
        - MYSQL_ROOT_PASSWORD=nupic
      volumes:
-         - "/home/vishnuv/docker_data:/app"
+         - "~/Cantiz-anomaly-data:/app"
 
    nupic:
-     image: docker_nupic
+     image: vishnumnair/anomaly-detection-module:0.1.0
      ports:
        - "5000:80"
      environment:
